@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeapp
+  labels:
+    run: my-nodeapp
+spec:
+  externalIPs:
+  - 192.168.49.2
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 4343
+  selector:
+    app: node-app
+  type: NodePort
