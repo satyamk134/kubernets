@@ -4,6 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "building the heml graphs"
+                echo "$USER"
                 sh "helm upgrade -i danger-release . --create-namespace  --namespace=greentown"
             }
         }
