@@ -1,0 +1,15 @@
+- hosts: localhost
+  vars:
+    ImageName: ""
+    Namespace: ""
+    imageTag: ""
+  #remote_user: ansible
+  #become: true
+  gather_facts: yes
+  connection: local
+  tasks:
+    - name: Deploy or upgrade Satyam applications
+      command: "helm upgrade -i danger-release . --create-namespace  --namespace {{Namespace}}"
+      delegate_to: localhost
+      ignore_errors: no
+

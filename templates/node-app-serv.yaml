@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeapp
+  labels:
+    run: my-nodeapp
+spec:
+  ports:
+  - name: http
+    port: 443
+    protocol: TCP
+    targetPort: 4343
+  selector:
+    app: node-app
