@@ -2,17 +2,41 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-route
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"  
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
 spec:
+  tls:
+    - hosts:
+      - www.satyam.shop
+      secretName: www.satyam.shop
   rules:
-    - host: laundary.test
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: my-nginx
-                port:
-                  number: 80
+  - host: api.satyam.shop
+    http:
+      paths:
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: my-nodeapp
+            port:
+              number: 80
+  - host: www.satyam.shop 
+    http:
+      paths:
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: my-react-app
+            port:
+              number: 443
+      - path: /api($|/)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: my-nodeapp
+            port:
+              number: 443
+

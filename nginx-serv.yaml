@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: my-nginx
   labels:
-    run: my-nginx
+    name: my-nginx
 spec:
   ports:
   - name: http
-    port: 4000
+    port: 80
     protocol: TCP
     targetPort: 80
   selector:
