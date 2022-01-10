@@ -1,0 +1,5 @@
+replicaCount: 2
+
+dockerTag: 
+  reactApp: latest
+  nodeApp: latest

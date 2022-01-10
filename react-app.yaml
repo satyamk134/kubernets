@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: satyamk134/laundary-react-app
+        image: satyamk134/laundary-react-app:{{.Values.dockerTag.reactApp}}
         ports:
         - containerPort: 80
 

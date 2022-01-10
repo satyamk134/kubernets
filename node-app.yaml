@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: satyamk134/laundary-node-app
+        image: satyamk134/laundary-node-app:{{.Values.dockerTag.nodeApp}}
         ports:
         - containerPort: 4343
 
