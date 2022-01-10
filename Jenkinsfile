@@ -12,10 +12,6 @@ pipeline {
                 echo "Testing" 
             }
         }
-        stage ('Invoke_pipelineA') {
-            steps {
-                build job: 'helm-pipeline'
-            }
-        }
+        
     }
 } 
