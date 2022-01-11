@@ -9,7 +9,7 @@
   connection: local
   tasks:
     - name: Deploy or upgrade Satyam applications
-      command: "helm upgrade -i danger-release . --set dockerTag.nodeApp={{imageTag}} --set dockerTag.reactApp={{imageTag}} --create-namespace  --namespace {{Namespace}}"
+      command: "helm upgrade -i danger-release-node . --set dockerTag.nodeApp={{imageTag}} --set dockerTag.reactApp={{imageTag}} --create-namespace  --namespace {{Namespace}}"
       delegate_to: localhost
       ignore_errors: no
 
